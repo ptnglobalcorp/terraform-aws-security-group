@@ -1,10 +1,9 @@
 output "sg_arn" {
   description = "The ARN of the security group"
-  value = aws_security_group.this.arn 
+  value = module.security_group.sg_arn 
 }
 
 output "sg_id" {
   description = "The ID of the security group"
-  value = aws_security_group.this.id
+  value = module.security_group.sg_id
 }
-
