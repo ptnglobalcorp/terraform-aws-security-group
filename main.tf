@@ -1,5 +1,6 @@
 locals {
   source_types = ["cidr_block", "ipv6_cidr_block", "prefix_list_id", "security_group"]
+  security_group_id = aws_security_group.sg.id
 }
 
 # Security group with name

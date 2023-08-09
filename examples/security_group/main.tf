@@ -16,7 +16,7 @@ module "security_group" {
 
   sg_description = "This is security group that created by terraform"
   sg_name = local.sg_tags.Name
-  vpc_id = aws_vpc.vpc_example
+  vpc_id = aws_vpc.vpc_example.id
 
   ingress_rules = [
     {
