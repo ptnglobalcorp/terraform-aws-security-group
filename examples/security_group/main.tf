@@ -12,7 +12,7 @@ resource "aws_vpc" "vpc_example" {
 
 # Security Group
 module "security_group" {
-  source = "./../../"
+  source = "ptnglobalcorp/security_group/aws"
 
   sg_description = "This is security group that created by terraform"
   sg_name = local.sg_tags.Name
