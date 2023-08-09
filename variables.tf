@@ -1,22 +1,21 @@
 variable "vpc_id" {
   description = "ID of the VPC where to create security group"
   type        = string
-  default     = null
 }
 
-variable "name_sg" {
-  description = "Name of security group - not required if create_sg is false"
+variable "sg_name" {
+  description = "Name of security group"
   type        = string
   default     = ""
 }
 
-variable "description_sg" {
+variable "sg_description" {
   description = "Description of security group"
   type        = string
   default     = ""
 }
 
-variable "tags" {
+variable "sg_tags" {
   description = "A mapping of tags to assign to security group"
   type        = map(any)
   default     = {}
@@ -43,7 +42,3 @@ variable "egress_rules" {
   }))
   default = []
 }
-
-
-
-

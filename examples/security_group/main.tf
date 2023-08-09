@@ -6,13 +6,17 @@ locals {
   }
 }
 
+resource "aws_vpc" "vpc_example" {
+  cidr_block = "10.0.0.0/16"
+}
+
 # Security Group
 module "security_group" {
   source = "./../../"
 
-  description_sg = "This is security group that created by terraform"
-  name_sg = local.sg_tags.Name
-  vpc_id = "vpc-0cd411d05d952eaa8"
+  sg_description = "This is security group that created by terraform"
+  sg_name = local.sg_tags.Name
+  vpc_id = aws_vpc.vpc_example
 
   ingress_rules = [
     {
@@ -29,5 +33,5 @@ module "security_group" {
     }
   ]
 
-  tags = local.sg_tags
+  sg_tags = local.sg_tags
 }

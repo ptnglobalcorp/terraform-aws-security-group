@@ -1,23 +1,22 @@
 locals {
   source_types = ["cidr_block", "ipv6_cidr_block", "prefix_list_id", "security_group"]
-  security_group_id = aws_security_group.this.id
 }
 
 # Security group with name
-resource "aws_security_group" "this" {
-  name = var.name_sg
-  description = var.description_sg
+resource "aws_security_group" "sg" {
+  name = var.sg_name
+  description = var.sg_description
   
   vpc_id = var.vpc_id
 
-  tags = merge(var.tags, {
+  tags = merge(var.sg_tags, {
     ApplicationRole = "Security Group"
     SensitiveData = "false"
   })
 }
 
 # Ingress - List of rules
-resource "aws_vpc_security_group_ingress_rule" "ingress_rule" {
+resource "aws_vpc_security_group_ingress_rule" "ingress_rules" {
   count = length(var.ingress_rules)
 
   security_group_id = local.security_group_id
@@ -34,7 +33,7 @@ resource "aws_vpc_security_group_ingress_rule" "ingress_rule" {
 }
 
 # Egress - List of rules
-resource "aws_vpc_security_group_egress_rule" "egress_rule" {
+resource "aws_vpc_security_group_egress_rule" "egress_rules" {
   count = length(var.egress_rules)
 
   security_group_id = local.security_group_id
