@@ -15,7 +15,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ./../../ | n/a |
+| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ptnglobalcorp/security_group/aws | n/a |
 
 ## Resources
 
